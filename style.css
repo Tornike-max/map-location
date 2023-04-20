@@ -1,0 +1,73 @@
+body {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.map-class {
+    width: 50%;
+    flex-grow: 1;
+    height: 100vh;
+    margin: 0 auto;
+    margin-top: 100px;
+    border-radius: 10px;
+}
+
+.left-div {
+    width: 35%;
+    height: 50vh;
+    background-color: #f1f1f1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.form{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    margin-left: 50%;
+}
+
+.hidden{
+    display: none;
+}
+
+/* Style for the input fields in the left-div */
+.left-div input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+}
+
+/* Style for the input field placeholders */
+input::placeholder {
+    color: #a9a9a9;
+    font-size: 14px;
+}
+
+/* Style for the input field when it is in focus */
+input[type="text"]:focus {
+    outline: none;
+    border: 2px solid #555;
+}
+
+
