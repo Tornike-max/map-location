@@ -1,73 +1,128 @@
-body {
+/* reset.css */
+
+/* Your reset CSS goes here */
+
+/* style.css */
+
+/* Global styles */
+
+  
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.map-class {
-    width: 50%;
-    flex-grow: 1;
-    height: 100vh;
-    margin: 0 auto;
-    margin-top: 100px;
-    border-radius: 10px;
-}
-
-.left-div {
-    width: 35%;
-    height: 50vh;
-    background-color: #f1f1f1;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, auto);
-    grid-gap: 10px;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
-}
-
-.form{
+    align-items:center;
+    
+  }
+  html, body {
     height: 100%;
-    width: 100%;
+  }
+  
+
+  /* Layout styles */
+  .left-div {
     display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    margin-left: 50%;
-}
+    justify-content:center;
+    align-items: center;
+    width: 40%;
+    height:85%;
+    padding: 20px;
+    background-color: #2d3439;
+    border-radius: 5px;
+  }
+  
+  .map-class {
+    float: right;
+    width: 50%;
+    height: 91%;
+    border-radius: 5px;
+  }
 
-.hidden{
-    display: none;
-}
 
-/* Style for the input fields in the left-div */
-.left-div input {
+  .workouts {
+    list-style: none;
+    height: 77vh;
+}
+  
+  /* Form styles */
+  .form__row {
+    margin-bottom: 10px;
+    background-color: #42484d;
+    border-radius: 5px;
+    padding: 1rem 1.85rem;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0.75rem 1.5rem;
+  }
+
+  .workout {
+    background-color: #42484d;
+    border-radius: 5px;
+    padding: 1.5rem 2.25rem;
+    margin-bottom: 1.75rem;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0.75rem 1.5rem;
+}
+  
+  .form__label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .form__input {
     padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  .form__input--type {
+    width: auto;
+  }
+  
+  .form__btn {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
-}
-
-input[type="text"] {
+    cursor: pointer;
     width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    background-color: #f8f8f8;
-    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .form__btn:hover {
+    background-color: #3e8e41;
+  }
+  
+  .form__row--hidden {
+    display: none;
+  }
+  
+  /* Leaflet map styles */
+  /* #map {
+    flex: 1;
+    height: 100%;
 }
+   */
+  /* Leaflet map marker icon styles */
+  .leaflet-marker-icon {
+    background-image: url('https://leafletjs.com/examples/custom-icons/leaf-green.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    width: 38px;
+    height: 95px;
+    margin-top: -95px;
+    margin-left: -19px;
+  }
+  
 
-/* Style for the input field placeholders */
-input::placeholder {
-    color: #a9a9a9;
-    font-size: 14px;
-}
-
-/* Style for the input field when it is in focus */
-input[type="text"]:focus {
-    outline: none;
-    border: 2px solid #555;
-}
 
 
