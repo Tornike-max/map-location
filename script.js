@@ -2,7 +2,11 @@
 
 
 let form = document.querySelector('.form');
-let inputDistance = document.querySelector('.dis')
+let inputDistance = document.querySelector('.form__input--distance')
+let inputCadence = document.querySelector('.form__input--cadence');
+let inputDuration = document.querySelector('.form__input--duration');
+let inputElevation = document.querySelector('.form__input--elevation')
+let inputType = document.querySelector('.form__input--type');
 let map,mapEvent;
 // navigator.geolocation.getCurrentPosition ასე ვიძახებთ ახლანდელ პოზიციას და getCurrentPosition-ს გადაეცემა ორი ფუნქცია
 // რომლებიც მოქმედებენ შემდეგ ნაირად, თუ ახლანდელ ადგილს იპოვნის უპრობლეოდ მაშინ შევდა პირველ ფუნქციაში, სადაც ჩვენ გვაქვს
@@ -14,8 +18,7 @@ navigator.geolocation.getCurrentPosition(
   function (position) {
     let { latitude } = position.coords;
     let { longitude } = position.coords;
-    let curLoc = `https://www.google.com/maps/@${latitude},${longitude}`;
-    console.log(curLoc);
+
     const coords = [latitude, longitude]
 
     map = L.map("map").setView(coords, 14);
@@ -37,8 +40,12 @@ navigator.geolocation.getCurrentPosition(
   }
 );
 
-form.addEventListener('submit', function(){
-  console.log('dsa')
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+
+  inputDuration.value = inputCadence.value = inputDistance.value = ''
+
   let { lat, lng } = mapEvent.latlng
   L.marker([lat,lng])
   .addTo(map)
@@ -56,3 +63,8 @@ form.addEventListener('submit', function(){
 })
 
 
+inputType.addEventListener('change', function(e){
+  e.preventDefault();
+  inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
+  inputCadence.closest('.form__row').classList.toggle('form__row--hidden')
+})
