@@ -13,6 +13,7 @@
     line-height: 1.6;
     display: flex;
     align-items:center;
+    justify-content: center;
     
   }
   html, body {
@@ -26,8 +27,7 @@
     justify-content:center;
     align-items: center;
     width: 40%;
-    height:85%;
-    padding: 20px;
+    height:90%;
     background-color: #2d3439;
     border-radius: 5px;
   }
@@ -35,14 +35,14 @@
   .map-class {
     float: right;
     width: 50%;
-    height: 91%;
+    height: 90%;
     border-radius: 5px;
   }
 
 
   .workouts {
     list-style: none;
-    height: 77vh;
+    max-width:100%;
 }
   
   /* Form styles */
@@ -128,5 +128,28 @@
   }
   
 
+  .Running-popup{
+     border-left:5px solid orange;
+     border-top:5px solid orange;
+     border-radius: 5px;
+ 
+  }
+
+  .Cycling-popup{
+    border-left:5px solid rgb(84, 247, 8);
+    border-top:5px solid rgb(84, 247, 8);
+    
+  }
 
 
+  .leaflet-popup .leaflet-popup-content-wrapper {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border-radius: 5px;
+    padding-right: 0.6rem;
+}
+
+
+.workout--cycling {
+  border-left: 5px solid var(--color-brand--1);
+}
