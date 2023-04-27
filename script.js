@@ -13,7 +13,7 @@ class Workout {
     let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 
     'September', 'October', 'December']
 
-    this.description = `${this.type.slice(0)} on ${months[this.date.getMonth()]} ${this.date.getDate()}`
+    this.description = `${this.type} on ${months[this.date.getMonth()]} ${this.date.getDate()}`
   }
 }
 
@@ -34,9 +34,9 @@ class Running extends Workout {
 
 class Cycling extends Workout {
   type = "Cycling";
-  constructor(coords, distance, duration, speed) {
+  constructor(coords, distance, duration, elevationGain) {
     super(coords, distance, duration);
-    this.speed = speed;
+    this.elevationGain = elevationGain;
     this.calcSpeed();
     this._setDescription()
   }
@@ -83,7 +83,7 @@ class App {
 
     const coords = [latitude, longitude];
     console.log(coords);
-    this.#map = L.map("map").setView(coords, 14);
+    this.#map = L.map("map").setView(coords, 18);
 
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
@@ -97,6 +97,11 @@ class App {
     this.#mapEvent = mapE;
     form.classList.remove("hidden");
     inputDistance.focus();
+  }
+
+  _hideForm(){
+    inputDuration.value = inputCadence.value = inputDistance.value = "";
+    form.classList.add("hidden");
   }
 
   _toggleElevationField(e) {
@@ -154,10 +159,9 @@ class App {
     this._renderWorkoutMarker(workout);
 
     //render workout on list
-    this._renderWorkout(workout)
 
     //Hide form + clear input fields
-    inputDuration.value = inputCadence.value = inputDistance.value = "";
+    this._hideForm()
   }
 
   _renderWorkoutMarker(workout) {
@@ -172,59 +176,10 @@ class App {
           className: `${workout.type}-popup`,
         })
       )
-      .setPopupContent(`${workout.type}💯`)
+      .setPopupContent(`💥${workout.description}`)
       .openPopup();
   }
 
-  _renderWorkout(workout) {
-    let html = `
-         <li class="workout workout--${workout.type}" data-id="1234567890">
-         <h2 class="workout__title">Running on April 14</h2>
-      <div class="workout__details">
-         <span class="workout__icon">${workout.type === 'Running' ? '🏃‍♂️' : '🚵'}</span>
-         <span class="workout__value">${workout.distance}</span>
-         <span class="workout__unit">km</span>
-      </div>
-      <div class="workout__details">
-            <span class="workout__icon">⏱</span>
-            <span class="workout__value">${workout.duration}</span>
-            <span class="workout__unit">min</span>
-      </div>
-      `;
-
-      if(workout.type === 'Running'){
-        html += `
-      <div class="workout__details">
-        <span class="workout__icon">⚡️</span>
-        <span class="workout__value">${workout.pace}</span>
-        <span class="workout__unit">min/km</span>
-      </div>
-      <div class="workout__details">
-        <span class="workout__icon">🦶🏼</span>
-        <span class="workout__value">${workout.cadence}</span>
-        <span class="workout__unit">spm</span>
-      </div>
-        `
-
-        if(workout.type === 'Cycling'){
-          html += `
-          <div class="workout__details">
-            <span class="workout__icon">⚡️</span>
-            <span class="workout__value">${workout.speed}</span>
-            <span class="workout__unit">km/h</span>
-          </div>
-          <div class="workout__details">
-            <span class="workout__icon">⛰</span>
-            <span class="workout__value">${workout.elevation}</span>
-            <span class="workout__unit">m</span>
-          </div>
-        </li>
-          `;
-
-          form.insertAdjacentHTML('afterend', html)
-        }
-      }
-  }
 
 }
 const app = new App();
